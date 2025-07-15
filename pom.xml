@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>private_gauge_kotlin_maven</groupId>
+    <artifactId>private_gauge_kotlin_maven</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>sample web e2e</name>
+
+    <properties>
+        <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
+        <java.version>21</java.version>
+        <kotlin.version>2.0.21</kotlin.version>
+        <kotlin.compiler.jvmTarget>${java.version}</kotlin.compiler.jvmTarget>
+        <gauge.java.version>0.11.1</gauge.java.version>
+        <gauge.maven.version>1.6.3</gauge.maven.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <playtest2.version>0.0.6</playtest2.version>
+    </properties>
+
+    <!--
+       <dependencies> プロジェクトが依存する全てのライブラリを囲むコンテナ
+       <dependency> 個別のライブラリ情報を囲むコンテナ
+       <groupId> ライブラリを作成した組織・会社の識別子
+       <artifactId> 具体的なライブラリの名前
+       <version> 使用するライブラリのバージョン
+       ${gauge.java.version} <properties>セクションで定義された値を参照。実際の値は 0.12.0
+       <scope> このライブラリをいつ使用するか
+       　　　　　- 利用可能なスコープ:
+                    - compile（デフォルト）: コンパイル時と実行時の両方
+                    - test: テスト時のみ
+                    - runtime: 実行時のみ
+                    - provided: コンパイル時のみ（実行環境が提供）
+     -->
+    <!-- Maven座標（Maven Coordinates） groupId:artifactId:version 例: com.thoughtworks.gauge:gauge-java:0.12.0  -->
+
+    <!--  依存関係のライブラリ
+        https://central.sonatype.com/
+        https://github.com/getgauge/gauge-java
+        https://central.sonatype.com/artifact/com.thoughtworks.gauge/gauge-java
+        https://github.com/sksamuel/hoplite
+        https://kotlinlang.org/api/core/kotlin-stdlib/
+        https://selenide.org/
+        https://github.com/sksamuel/hoplite
+        https://central.sonatype.com/artifact/com.sksamuel.hoplite/hoplite-yaml
+        https://central.sonatype.com/artifact/com.sksamuel.hoplite/hoplite-core
+        https://central.sonatype.com/artifact/org.wiremock/wiremock
+        https://central.sonatype.com/artifact/com.uzabase.playtest2/playtest-core
+        https://central.sonatype.com/artifact/com.uzabase.playtest2/playtest-wiremock
+        https://central.sonatype.com/artifact/com.uzabase.playa11y/playa11y
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.thoughtworks.gauge</groupId>
+            <artifactId>gauge-java</artifactId>
+            <version>${gauge.java.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>7.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sksamuel.hoplite</groupId>
+            <artifactId>hoplite-core</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sksamuel.hoplite</groupId>
+            <artifactId>hoplite-yaml</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>3.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.uzabase.playtest2</groupId>
+            <artifactId>playtest-core</artifactId>
+            <version>${playtest2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.uzabase.playtest2</groupId>
+            <artifactId>playtest-wiremock</artifactId>
+            <version>${playtest2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.uzabase.playa11y</groupId>
+            <artifactId>playa11y</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>fixtures</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>com.thoughtworks.gauge.maven</groupId>
+                <artifactId>gauge-maven-plugin</artifactId>
+                <version>${gauge.maven.version}</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <configuration>
+                            <specsDir>specs</specsDir>
+                        </configuration>
+                        <goals>
+                            <goal>validate</goal>
+                            <goal>execute</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <configuration>
+                    <args>
+                        <arg>-Xjsr305=strict</arg>
+                    </args>
+                    <jvmTarget>${kotlin.compiler.jvmTarget}</jvmTarget>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <source>src/test/kotlin</source>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
