@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="private_gauge_kotlin_maven" />
         <module name="gauge_kotlin_maven" />
       </profile>
     </annotationProcessing>

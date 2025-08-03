@@ -51,6 +51,7 @@
         https://central.sonatype.com/artifact/com.uzabase.playtest2/playtest-wiremock
         https://central.sonatype.com/artifact/com.uzabase.playa11y/playa11y
     -->
+
     <dependencies>
         <dependency>
             <groupId>com.thoughtworks.gauge</groupId>
