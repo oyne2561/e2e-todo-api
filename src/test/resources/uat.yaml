@@ -1,4 +1,6 @@
 rest:
-  baseUrl: http://localhost:3000
-  companyApi:
-    baseUrl: http://localhost:3101
+  baseUrl: http://localhost:4000
+  userApi:
+    baseUrl: http://localhost:3001
+  adsApi:
+    baseUrl: http://localhost:3002

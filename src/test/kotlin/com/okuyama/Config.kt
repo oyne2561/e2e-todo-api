@@ -14,7 +14,8 @@ data class Config(
 )
 
 data class Rest(
-    val companyApi: Endpoint,
+    val userApi: Endpoint,
+    val adsApi: Endpoint,
     val baseUrl: URI
 )
 
