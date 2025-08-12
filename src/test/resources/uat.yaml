@@ -1,0 +1,4 @@
+rest:
+  baseUrl: http://localhost:3000
+  companyApi:
+    baseUrl: http://localhost:3101

@@ -17,7 +17,7 @@
         <gauge.java.version>0.11.1</gauge.java.version>
         <gauge.maven.version>1.6.3</gauge.maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <playtest2.version>0.0.6</playtest2.version>
+        <playtest2.version>0.0.9</playtest2.version>
     </properties>
 
     <!--
@@ -95,9 +95,14 @@
             <version>${playtest2.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.uzabase.playa11y</groupId>
-            <artifactId>playa11y</artifactId>
-            <version>0.0.5</version>
+            <groupId>com.uzabase.playtest2</groupId>
+            <artifactId>playtest-http</artifactId>
+            <version>${playtest2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.uzabase.playtest2</groupId>
+            <artifactId>playtest-jdbc</artifactId>
+            <version>${playtest2.version}</version>
         </dependency>
     </dependencies>
 
