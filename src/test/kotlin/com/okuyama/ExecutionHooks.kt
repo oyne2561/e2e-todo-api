@@ -42,11 +42,22 @@ class ExectionHooks {
             .replace("${Paths.get(".").toRealPath().toString()}/", "")
             .replace(".spec", "")
 
+//    listOf は Kotlin の標準関数で、複数の要素からリスト（List）を作成します。
+//    to はペア（Pair）を作るための中置関数で、A to B と書くと Pair(A, B) になります。
     private fun setupMocks(path: String) {
         listOf(
             UserApi to "user-api",
             AdsApi to "ads-api"
-        )
+        ).forEach { (mock, apiPath) ->
+            mock.resetRequests()
+            mock.resetMappings()
+            println("mock: $mock")
+            println("APIパス: $apiPath")
+
+            Thread.currentThread().contextClassLoader.getResource("${path}/$apiPath")
+                ?.let { Paths.get(it.toURI()) }
+                ?.run { mock.loadMappingsFrom(this.toFile())}
+        }
     }
 
     // A.let { B(it) } は「AをitとしてBに渡し、Bの結果を返す」という意味です。
@@ -57,8 +68,5 @@ class ExectionHooks {
     val AdsApi =
         config.rest.adsApi.baseUrl
             .let { WireMock(it.host, it.port) }
-
-
-
 
 }
