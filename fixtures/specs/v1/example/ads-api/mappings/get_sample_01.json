@@ -3,26 +3,26 @@
     {
       "request": {
         "method": "GET",
-        "urlPath": "v1/userSample/1"
+        "urlPath": "v1/adsSample/1"
       },
       "response": {
         "status": 200,
         "jsonBody": {
           "id": "1",
-          "name": "v1/userSample/1"
+          "name": "v1/adsSample/1"
         }
       }
     },
     {
       "request": {
         "method": "GET",
-        "urlPath": "/v1/userSample/2"
+        "urlPath": "/v1/adsSample/2"
       },
       "response": {
         "status": 200,
         "jsonBody": {
           "id": "2",
-          "name": "/v1/userSample/2"
+          "name": "v1/adsSample/2"
         }
       }
     }
