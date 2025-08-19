@@ -3,6 +3,7 @@ import com.thoughtworks.gauge.BeforeSuite
 import com.thoughtworks.gauge.BeforeSpec
 import com.thoughtworks.gauge.ExecutionContext
 import com.okuyama.config
+import com.uzabase.Db
 import com.uzabase.playtest2.core.config.Configuration.Companion.playtest2
 import com.uzabase.playtest2.http.config.http
 import com.uzabase.playtest2.wiremock.config.wireMock
@@ -32,6 +33,8 @@ class ExectionHooks {
         println("テスト仕様: $path のセットアップを実行中...")
 
         setupMocks(path)
+
+        Db.reset()
 
         println("=== @BeforeSpec 処理完了 ===")
     }

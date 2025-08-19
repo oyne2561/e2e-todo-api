@@ -10,7 +10,8 @@ val config = ConfigLoaderBuilder.default()
     .loadConfigOrThrow<Config>()
 
 data class Config(
-    val rest: Rest
+    val rest: Rest,
+    val database: Database
 )
 
 data class Rest(
@@ -21,4 +22,12 @@ data class Rest(
 
 data class Endpoint(
     val baseUrl: URI
+)
+
+data class Database(
+    val myappDb: JdbcUrl
+)
+
+data class JdbcUrl(
+    val jdbcUrl: URI
 )
