@@ -3,13 +3,13 @@ import com.thoughtworks.gauge.BeforeSuite
 import com.thoughtworks.gauge.BeforeSpec
 import com.thoughtworks.gauge.ExecutionContext
 import com.okuyama.config
-import com.uzabase.Db
+import com.okuyama.Db
 import com.uzabase.playtest2.core.config.Configuration.Companion.playtest2
 import com.uzabase.playtest2.http.config.http
 import com.uzabase.playtest2.wiremock.config.wireMock
 import java.nio.file.Paths
 
-class ExectionHooks {
+class ExecutionHooks {
 
     @BeforeSuite
     fun beforeSuite() {

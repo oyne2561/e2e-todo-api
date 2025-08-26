@@ -1,0 +1,32 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPath": "/users/uFYFMKEogRNh4gvzrabJo"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "id": "uFYFMKEogRNh4gvzrabJo",
+          "displayName": "ユーザー1",
+          "username": "user001"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPath": "/users/ECmhsb9RA1nXpih-0CGG3"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "id": "ECmhsb9RA1nXpih-0CGG3",
+          "displayName": "ユーザー2",
+          "username": "user002"
+        }
+      }
+    }
+  ]
+}
